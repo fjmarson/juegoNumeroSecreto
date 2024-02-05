@@ -11,27 +11,31 @@ function asignarTextoElemento(elemento, texto) {
 }
 function verificarIntento() {
     let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);
+
+    if (isNaN(numeroDeUsuario) || numeroDeUsuario < 1 || numeroDeUsuario > numeroMaximo) {
+        asignarTextoElemento('p', 'Ingresa un número válido dentro del rango.');
+        return;
+    }
     
     if (numeroDeUsuario === numeroGenerado) {
-        asignarTextoElemento('p', `Acertaste el número en ${intentos} ${(intentos === 1 ? 'intento' : 'intentos')}`);
+        asignarTextoElemento('p', `¡Acertaste el número en ${intentos} ${(intentos === 1 ? 'intento' : 'intentos')}!`);
         document.getElementById('reiniciar').removeAttribute('disabled');
     } else {
-        // El usuario no acertó.
         if (intentos < 4) {
             if (numeroDeUsuario > numeroGenerado) {
-                asignarTextoElemento('p', 'El número secreto es menor');
+                asignarTextoElemento('p', 'El número secreto es menor. Intenta de nuevo.');
             } else {
-                asignarTextoElemento('p', 'El número secreto es mayor');
+                asignarTextoElemento('p', 'El número secreto es mayor. Intenta de nuevo.');
             }
-            intentos ++;
+            intentos++;
             limpiarCaja();
         } else {
-            // Se alcanzó el límite de intentos
             asignarTextoElemento('p', `Agotaste los 4 intentos. El número secreto era ${numeroGenerado}.`);
             document.getElementById('reiniciar').removeAttribute('disabled');
         }
     }
 }
+
 function limpiarCaja() {
     document.querySelector('#valorUsuario').value = '';
 }
