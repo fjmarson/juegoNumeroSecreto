@@ -17,13 +17,19 @@ function verificarIntento() {
         document.getElementById('reiniciar').removeAttribute('disabled');
     } else {
         // El usuario no acertó.
-       if (numeroDeUsuario > numeroGenerado) {
-            asignarTextoElemento('p', 'El número secreto es menor');
+        if (intentos < 4) {
+            if (numeroDeUsuario > numeroGenerado) {
+                asignarTextoElemento('p', 'El número secreto es menor');
+            } else {
+                asignarTextoElemento('p', 'El número secreto es mayor');
+            }
+            intentos ++;
+            limpiarCaja();
         } else {
-            asignarTextoElemento('p', 'El número secreto es mayor');
+            // Se alcanzó el límite de intentos
+            asignarTextoElemento('p', `Agotaste los 4 intentos. El número secreto era ${numeroGenerado}.`);
+            document.getElementById('reiniciar').removeAttribute('disabled');
         }
-        intentos ++;
-        limpiarCaja();
     }
 }
 function limpiarCaja() {
