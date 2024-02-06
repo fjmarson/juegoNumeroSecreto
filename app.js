@@ -1,7 +1,7 @@
 let numeroGenerado = 0;
 let intentos = 0;
 let listaNumeroSorteado = [];
-let numeroMaximo = 10;
+let numeroMaximo = 100;
 
 console.log(numeroGenerado);
 function asignarTextoElemento(elemento, texto) {
