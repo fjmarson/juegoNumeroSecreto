@@ -13,7 +13,7 @@ function verificarIntento() {
     let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);
 
     if (isNaN(numeroDeUsuario) || numeroDeUsuario < 1 || numeroDeUsuario > numeroMaximo) {
-        asignarTextoElemento('p', 'Ingresa un número válido dentro del rango.');
+        asignarTextoElemento('p', 'Dale Andrés!!! Ingresa un número válido dentro del rango.');
         return;
     }
     
